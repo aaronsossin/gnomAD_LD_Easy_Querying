@@ -5,7 +5,7 @@ myDir = os.getcwd()
 path = Path(myDir)
 a=str(path.parent.absolute())
 sys.path.append(a)
-from gnomAD_LD_Easy_Querying.hyperparams import global_directory_path,sherlock_partition_string
+from hyperparams import global_directory_path,sherlock_partition_string
 
 script_file_lines = [
     "#!/bin/bash",

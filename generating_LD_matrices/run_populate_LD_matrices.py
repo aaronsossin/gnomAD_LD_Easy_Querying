@@ -4,7 +4,7 @@ myDir = os.getcwd()
 path = Path(myDir)
 a=str(path.parent.absolute())
 sys.path.append(a)
-from gnomAD_LD_Easy_Querying.hyperparams import global_directory_path,sherlock_partition_string
+from hyperparams import global_directory_path,sherlock_partition_string
 
 
 
@@ -22,7 +22,7 @@ pop = sys.argv[1]
 
 script_file_lines = [
     "#!/bin/bash",
-    "#SBATCH -p qsu,zihuai",
+    "#SBATCH -p " + sherlock_partition_string,
     "#SBATCH --mem=128G",
     "#SBATCH -n 1",
     "#SBATCH -N 1",
