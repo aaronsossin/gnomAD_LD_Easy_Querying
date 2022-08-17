@@ -17,7 +17,7 @@ myDir = os.getcwd()
 path = Path(myDir)
 a=str(path.parent.absolute())
 sys.path.append(a)
-from gnomAD_LD_Easy_Querying.hyperparams import global_directory_path,sherlock_partition_string
+from hyperparams import global_directory_path,sherlock_partition_string
 
 
 
@@ -50,15 +50,9 @@ if len(sys.argv) > 3:
 # Initialize hail
 hl.init(min_block_size=128)
 
-# Different block matrix / variant indices file and save directory based on population
-if pop == "nfe":
-    bm = BlockMatrix.read(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1.nfe.common.adj.ld.bm")
-    ht_idx = hl.read_table(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1.nfe.common.adj.ld.variant_indices.ht")
-    save_dir = global_directory_path + "LD_matrices/nfe/"
-elif pop == "afr":
-    bm = BlockMatrix.read(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1.afr.common.adj.ld.bm")
-    ht_idx = hl.read_table(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1.afr.common.adj.ld.variant_indices.ht")
-    save_dir = global_directory_path + "LD_matrices/afr/"
+bm = BlockMatrix.read(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1." + pop + ".common.adj.ld.bm")
+ht_idx = hl.read_table(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1." + pop + ".common.adj.ld.variant_indices.ht")
+save_dir = global_directory_path + "LD_matrices/" + pop + "/"
 
 # Create sub-directory for saving files if it doesn't exist
 if os.path.exists(save_dir):

@@ -2,6 +2,9 @@
 
 To generate the LD files for a given population (let's say African (afr)) do the following
 
+Note, define population as the shortened form as seen in gnomAD website.
+African = afr, Non-finnish european = nfe, Estonian = est, etc...
+
 1. 
 
 Navigate to hyperparams.py to update some hyper-parameters that the rest of scripts will use. Where this repository is git cloned, 

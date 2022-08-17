@@ -14,7 +14,7 @@ myDir = os.getcwd()
 path = Path(myDir)
 a=str(path.parent.absolute())
 sys.path.append(a)
-from gnomAD_LD_Easy_Querying.hyperparams import global_directory_path,sherlock_partition_string
+from hyperparams import global_directory_path,sherlock_partition_string
 
 
 """
@@ -47,18 +47,16 @@ if len(sys.argv) >= 3:
     pop = sys.argv[2]
 
 # Depending on population, load different block matrix and variant indices hail, define different save location, etc..
+bm = BlockMatrix.read(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1." + pop + ".common.adj.ld.bm")
+ht_idx = hl.read_table(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1." + pop + ".common.adj.ld.variant_indices.ht")
+save_dir = global_directory_path + "independent_partitions/" + pop + "/"
+
 if pop == "afr":
-    bm = BlockMatrix.read(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1.afr.common.adj.ld.bm")
-    ht_idx = hl.read_table(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1.afr.common.adj.ld.variant_indices.ht")
-    save_dir = global_directory_path + "independent_partitions/afr/"
     beriza_defined_population_name = "afr"
-elif pop == "nfe" or pop == "eur":
-    bm = BlockMatrix.read(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1.nfe.common.adj.ld.bm")
-    ht_idx = hl.read_table(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1.nfe.common.adj.ld.variant_indices.ht")
-    save_dir = global_directory_path + "independent_partitions/nfe/"
+elif pop == "nfe" or pop == "asj" or pop == "amr" or pop == "fin" or pop == "est" or pop == "nwe" or pop == "seu":
     beriza_defined_population_name = "eur"
 else:
-    assert False #Other populations not yet defined
+     beriza_defined_population_name = "asn"
 
 partitions_dict = dict()
 
