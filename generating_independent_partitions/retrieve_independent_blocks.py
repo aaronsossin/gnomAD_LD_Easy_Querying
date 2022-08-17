@@ -43,12 +43,12 @@ if len(sys.argv) >= 3:
 if pop == "afr":
     bm = BlockMatrix.read("/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomAD_downloaded_files/gnomad.genomes.r2.1.1.afr.common.adj.ld.bm")
     ht_idx = hl.read_table("/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomAD_downloaded_files/gnomad.genomes.r2.1.1.afr.common.adj.ld.variant_indices.ht")# "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomad.genomes.r2.1.1.nfe_test.common.adj.ld.variant_indices.ht")
-    save_dir = "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/LD_Querying_For_General_Use/independent_partitions/afr/"
+    save_dir = "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomAD_LD_Easy_Querying/independent_partitions/afr/"
     beriza_defined_population_name = "afr"
 elif pop == "nfe" or pop == "eur":
     bm = BlockMatrix.read("/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomAD_downloaded_files/gnomad.genomes.r2.1.1.nfe.common.adj.ld.bm")
     ht_idx = hl.read_table("/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomAD_downloaded_files/gnomad.genomes.r2.1.1.nfe.common.adj.ld.variant_indices.ht")# "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomad.genomes.r2.1.1.nfe_test.common.adj.ld.variant_indices.ht")
-    save_dir = "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/LD_Querying_For_General_Use/independent_partitions/nfe/"
+    save_dir = "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomAD_LD_Easy_Querying/independent_partitions/nfe/"
     beriza_defined_population_name = "eur"
 else:
     assert False #Other populations not yet defined

@@ -8,4 +8,4 @@
 
 pip3 install gsutil
 
-gsutil cp -r gs://gcp-public-data--gnomad/release/2.1.1/ld/gnomad.genomes.r2.1.1.nfe.common.adj.ld.variant_indices.ht /oak/stanford/groups/zihuai/gnomAD/LD_Scores/LD_Querying_For_General_Use/gnomAD_downloaded_files/
+gsutil cp -r gs://gcp-public-data--gnomad/release/2.1.1/ld/gnomad.genomes.r2.1.1.nfe.common.adj.ld.variant_indices.ht /oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomAD_LD_Easy_Querying/gnomAD_downloaded_files/

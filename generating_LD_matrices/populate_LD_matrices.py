@@ -46,11 +46,11 @@ hl.init(min_block_size=128)
 if pop == "nfe":
     bm = BlockMatrix.read("/oak/stanford/groups/zihuai/fredlu/MpraScreen/aaron_AD/hail/gnomad.genomes.r2.1.1.nfe.common.adj.ld.bm")
     ht_idx = hl.read_table("/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomad.genomes.r2.1.1.nfe.common.adj.ld.variant_indices.ht")
-    save_dir = "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/LD_Querying_For_General_Use/LD_matrices/nfe/"
+    save_dir = "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomAD_LD_Easy_Querying/LD_matrices/nfe/"
 elif pop == "afr":
     bm = BlockMatrix.read("/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomad.genomes.r2.1.1.afr.common.adj.ld.bm")
     ht_idx = hl.read_table("/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomad.genomes.r2.1.1.afr.common.adj.ld.variant_indices.ht")
-    save_dir = "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/LD_Querying_For_General_Use/LD_matrices/afr/"
+    save_dir = "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomAD_LD_Easy_Querying/LD_matrices/afr/"
 
 # Create sub-directory for saving files if it doesn't exist
 if os.path.exists(save_dir):
