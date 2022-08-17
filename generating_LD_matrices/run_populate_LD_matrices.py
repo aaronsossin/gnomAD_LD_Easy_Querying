@@ -1,5 +1,15 @@
 import sys
-from gnomAD_LD_Easy_Querying.hyperparams import global_directory_path
+from pathlib import Path
+myDir = os.getcwd()
+path = Path(myDir)
+a=str(path.parent.absolute())
+sys.path.append(a)
+from gnomAD_LD_Easy_Querying.hyperparams import global_directory_path,sherlock_partition_string
+
+
+
+
+
 """ 
 Generate LD matrices of every chromosome as batch script with population as command line argument
 To make things go faster, we run two scripts per chromosome, one that starts at beginning and one that starts at end 
@@ -17,7 +27,8 @@ script_file_lines = [
     "#SBATCH -n 1",
     "#SBATCH -N 1",
     "#SBATCH --time=06:00:00",
-    "#SBATCH -e error_ld.txt",
+    "#SBATCH -e " + global_directory_path + "batch_script_files/error_files/error_LD.txt",
+    "#SBATCH -o " + global_directory_path + "batch_script_files/output_files/output_LD.txt",
     "ml python/3.6.1",
     "ml chemistry",
     "ml gromacs",
@@ -33,6 +44,7 @@ for i in range(1,23):
     updated_script[-1] = updated_script[-1] + " " + str(i) + " " + str(pop)
     filename = global_directory_path + "batch_script_files/" + str(i) + ".sh"
     updated_script[6] = updated_script[6].replace(".txt",str(i) + ".txt")
+    updated_script[7] = updated_script[7].replace(".txt",str(i) + ".txt")
     textfile = open(filename, "w")
     for element in updated_script:
         textfile.write(element + "\n")
@@ -47,6 +59,7 @@ for i in range(1,23):
     updated_script[-1] = updated_script[-1] + " " + str(i) + " " + str(pop) + " " + str(True)
     filename = global_directory_path + "batch_script_files/" + str(i) + ".sh"
     updated_script[6] = updated_script[6].replace(".txt",str(i) + ".txt")
+    updated_script[7] = updated_script[7].replace(".txt",str(i) + ".txt")
     textfile = open(filename, "w")
     for element in updated_script:
         textfile.write(element + "\n")

@@ -1,5 +1,10 @@
 import sys
-from gnomAD_LD_Easy_Querying.hyperparams import global_directory_path
+from pathlib import Path
+myDir = os.getcwd()
+path = Path(myDir)
+a=str(path.parent.absolute())
+sys.path.append(a)
+from gnomAD_LD_Easy_Querying.hyperparams import global_directory_path,sherlock_partition_string
 
 
 """ 
@@ -19,7 +24,8 @@ script_file_lines = [
     "#SBATCH -n 1",
     "#SBATCH -N 1",
     "#SBATCH --time=02:00:00",
-    "#SBATCH -e error_ld.txt",
+    "#SBATCH -e " + global_directory_path + "batch_script_files/error_files/error_retrieve_independent_blocks.txt",
+    "#SBATCH -o " + global_directory_path + "batch_script_files/output_files/output_retrieve_independent_blocks.txt",
     "ml python/3.6.1",
     "ml chemistry",
     "ml gromacs",
