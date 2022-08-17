@@ -1,5 +1,5 @@
 import sys
-
+from gnomAD_LD_Easy_Querying.hyperparams import global_directory_path
 """ 
 Generate LD matrices of every chromosome as batch script with population as command line argument
 To make things go faster, we run two scripts per chromosome, one that starts at beginning and one that starts at end 
@@ -31,7 +31,7 @@ import os
 for i in range(1,23):
     updated_script = script_file_lines.copy()
     updated_script[-1] = updated_script[-1] + " " + str(i) + " " + str(pop)
-    filename = "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/nearly_independent_Beriza/temp_scripts/po" + str(i) + ".sh"
+    filename = global_directory_path + "batch_script_files/" + str(i) + ".sh"
     updated_script[6] = updated_script[6].replace(".txt",str(i) + ".txt")
     textfile = open(filename, "w")
     for element in updated_script:
@@ -45,7 +45,7 @@ for i in range(1,23):
 for i in range(1,23):
     updated_script = script_file_lines.copy()
     updated_script[-1] = updated_script[-1] + " " + str(i) + " " + str(pop) + " " + str(True)
-    filename = "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/nearly_independent_Beriza/temp_scripts/po" + str(i) + ".sh"
+    filename = global_directory_path + "batch_script_files/" + str(i) + ".sh"
     updated_script[6] = updated_script[6].replace(".txt",str(i) + ".txt")
     textfile = open(filename, "w")
     for element in updated_script:

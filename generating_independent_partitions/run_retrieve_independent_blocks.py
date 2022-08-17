@@ -1,5 +1,5 @@
 import sys
-
+from gnomAD_LD_Easy_Querying.hyperparams import global_directory_path
 
 
 """ 
@@ -35,7 +35,7 @@ pop = sys.argv[1]
 for i in range(1,23):
     updated_script = script_file_lines.copy()
     updated_script[-1] = updated_script[-1] + " " + str(i) + " " + str(pop)
-    filename = "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/nearly_independent_Beriza/temp_scripts/retrieve" + str(i) + ".sh"
+    filename = global_directory_path + "batch_script_files/" + str(i) + ".sh"
     textfile = open(filename, "w")
     for element in updated_script:
         textfile.write(element + "\n")

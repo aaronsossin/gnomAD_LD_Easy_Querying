@@ -11,6 +11,7 @@ import struct
 import numpy as np
 import glob as glob
 import pickle
+from gnomAD_LD_Easy_Querying.hyperparams import global_directory_path
 
 
 """
@@ -44,20 +45,20 @@ hl.init(min_block_size=128)
 
 # Different block matrix / variant indices file and save directory based on population
 if pop == "nfe":
-    bm = BlockMatrix.read("/oak/stanford/groups/zihuai/fredlu/MpraScreen/aaron_AD/hail/gnomad.genomes.r2.1.1.nfe.common.adj.ld.bm")
-    ht_idx = hl.read_table("/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomad.genomes.r2.1.1.nfe.common.adj.ld.variant_indices.ht")
-    save_dir = "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomAD_LD_Easy_Querying/LD_matrices/nfe/"
+    bm = BlockMatrix.read(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1.nfe.common.adj.ld.bm")
+    ht_idx = hl.read_table(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1.nfe.common.adj.ld.variant_indices.ht")
+    save_dir = global_directory_path + "LD_matrices/nfe/"
 elif pop == "afr":
-    bm = BlockMatrix.read("/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomad.genomes.r2.1.1.afr.common.adj.ld.bm")
-    ht_idx = hl.read_table("/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomad.genomes.r2.1.1.afr.common.adj.ld.variant_indices.ht")
-    save_dir = "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomAD_LD_Easy_Querying/LD_matrices/afr/"
+    bm = BlockMatrix.read(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1.afr.common.adj.ld.bm")
+    ht_idx = hl.read_table(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1.afr.common.adj.ld.variant_indices.ht")
+    save_dir = global_directory_path + "LD_matrices/afr/"
 
 # Create sub-directory for saving files if it doesn't exist
 if os.path.exists(save_dir):
     os.mkdir(save_dir)
 
 # Pre-partitioned file loading
-partitions = pickle.load(open("/oak/stanford/groups/zihuai/gnomAD/LD_Scores/independent_partitions/" + pop + "/partitions_for_" + str(chr_) + ".pickle","rb"))[str(chr_)]
+partitions = pickle.load(open(global_directory_path + "independent_partitions/" + pop + "/partitions_for_" + str(chr_) + ".pickle","rb"))[str(chr_)]
 
 # Here, we populate our independent block with data from sub-matrix queries
 # So, we have two non-overlapping intervals (a,b) & (x,y) where we calculate the LD 

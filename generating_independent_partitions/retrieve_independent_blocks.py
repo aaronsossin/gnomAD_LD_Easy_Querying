@@ -8,6 +8,7 @@ import sys
 import struct
 import numpy as np
 import os
+from gnomAD_LD_Easy_Querying.hyperparams import global_directory_path
 import math
 
 """
@@ -41,14 +42,14 @@ if len(sys.argv) >= 3:
 
 # Depending on population, load different block matrix and variant indices hail, define different save location, etc..
 if pop == "afr":
-    bm = BlockMatrix.read("/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomAD_downloaded_files/gnomad.genomes.r2.1.1.afr.common.adj.ld.bm")
-    ht_idx = hl.read_table("/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomAD_downloaded_files/gnomad.genomes.r2.1.1.afr.common.adj.ld.variant_indices.ht")# "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomad.genomes.r2.1.1.nfe_test.common.adj.ld.variant_indices.ht")
-    save_dir = "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomAD_LD_Easy_Querying/independent_partitions/afr/"
+    bm = BlockMatrix.read(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1.afr.common.adj.ld.bm")
+    ht_idx = hl.read_table(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1.afr.common.adj.ld.variant_indices.ht")
+    save_dir = global_directory_path + "independent_partitions/afr/"
     beriza_defined_population_name = "afr"
 elif pop == "nfe" or pop == "eur":
-    bm = BlockMatrix.read("/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomAD_downloaded_files/gnomad.genomes.r2.1.1.nfe.common.adj.ld.bm")
-    ht_idx = hl.read_table("/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomAD_downloaded_files/gnomad.genomes.r2.1.1.nfe.common.adj.ld.variant_indices.ht")# "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomad.genomes.r2.1.1.nfe_test.common.adj.ld.variant_indices.ht")
-    save_dir = "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomAD_LD_Easy_Querying/independent_partitions/nfe/"
+    bm = BlockMatrix.read(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1.nfe.common.adj.ld.bm")
+    ht_idx = hl.read_table(global_directory_path + "gnomAD_downloaded_files/gnomad.genomes.r2.1.1.nfe.common.adj.ld.variant_indices.ht")
+    save_dir = global_directory_path + "independent_partitions/nfe/"
     beriza_defined_population_name = "eur"
 else:
     assert False #Other populations not yet defined
@@ -56,7 +57,7 @@ else:
 partitions_dict = dict()
 
 # Load file which contains independent block information
-beriza_chromsome_and_population_partition_file = "/oak/stanford/groups/zihuai/gnomAD/LD_Scores/nearly_independent_Beriza/ldetect-data/" + pop.upper() + "/fourier_ls-chr" + str(chr_) + ".bed"
+beriza_chromsome_and_population_partition_file = global_directory_path + "generating_independent_blocks/ldetect-data/" + pop.upper() + "/fourier_ls-chr" + str(chr_) + ".bed"
 beriza_chromsome_and_population_partition_file_df = pd.read_csv(beriza_chromsome_and_population_partition_file,sep='\t')
 beriza_chromsome_and_population_partition_file_df.columns = ["chr","start","stop"]
 
