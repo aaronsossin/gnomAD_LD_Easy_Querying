@@ -18,7 +18,7 @@ script_file_lines = [
     "#SBATCH -o " + global_directory_path + "batch_script_files/output_files/output_download.txt",
     "ml python/3.6.1",
     "pip3 install gsutil",
-    "gsutil cp -r XXX /oak/stanford/groups/zihuai/gnomAD/LD_Scores/gnomAD_LD_Easy_Querying/gnomAD_downloaded_files/"
+    "gsutil cp -r XXX " + global_directory_path + "gnomAD_downloaded_files/"
 ]
 
 assert len(sys.argv) > 1
