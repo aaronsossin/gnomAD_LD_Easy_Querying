@@ -59,7 +59,7 @@ else:
 partitions_dict = dict()
 
 # Load file which contains independent block information
-beriza_chromsome_and_population_partition_file = global_directory_path + "generating_independent_blocks/ldetect-data/" + pop.upper() + "/fourier_ls-chr" + str(chr_) + ".bed"
+beriza_chromsome_and_population_partition_file = global_directory_path + "generating_independent_partitions/ldetect-data/" + pop.upper() + "/fourier_ls-chr" + str(chr_) + ".bed"
 beriza_chromsome_and_population_partition_file_df = pd.read_csv(beriza_chromsome_and_population_partition_file,sep='\t')
 beriza_chromsome_and_population_partition_file_df.columns = ["chr","start","stop"]
 
