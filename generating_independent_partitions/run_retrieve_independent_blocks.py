@@ -1,11 +1,11 @@
 import sys
 from pathlib import Path
+import os
 myDir = os.getcwd()
 path = Path(myDir)
 a=str(path.parent.absolute())
 sys.path.append(a)
 from hyperparams import global_directory_path,sherlock_partition_string
-import os
 
 """ 
 Here we parallelize by chromosome, and retrieve the blocks defined by Beriza and save the block matrix hits within each partition in files
