@@ -5,7 +5,7 @@ path = Path(myDir)
 a=str(path.parent.absolute())
 sys.path.append(a)
 from hyperparams import global_directory_path,sherlock_partition_string
-
+import os
 
 """ 
 Here we parallelize by chromosome, and retrieve the blocks defined by Beriza and save the block matrix hits within each partition in files
@@ -32,7 +32,6 @@ script_file_lines = [
     "ml java",
     "python3 retrieve_independent_blocks.py"
 ]
-import os
 
 # Must define a population for this script to work
 assert len(sys.argv) > 1
