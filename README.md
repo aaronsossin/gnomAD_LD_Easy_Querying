@@ -1,3 +1,9 @@
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
 #WORKFLOW
 
 To generate the LD files for a given population (let's say African (afr)) do the following
@@ -44,6 +50,12 @@ Moreover, we want to know which independent blocks each hit in our LD matrices b
 
     1. Navigate terminal to generating_LD_matrices/ and run:
     $python3 run_populate_LD_matrices.py nfe, again where 'nfe' is changed to the population of choice
+
+## License
+
+Distributed under the ASossin License
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
