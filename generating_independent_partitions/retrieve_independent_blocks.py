@@ -99,6 +99,6 @@ if not os.path.exists(save_dir):
 # Saving partition info into folder for use in next script
 import pickle
 
-with open(save_dir + "partitions_for_" + str(chr) + ".pickle","wb") as f:
+with open(save_dir + "partitions_for_" + str(chr_) + ".pickle","wb") as f:
     pickle.dump(partitions_dict,f)
 
