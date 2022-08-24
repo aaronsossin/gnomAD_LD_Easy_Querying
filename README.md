@@ -5,9 +5,7 @@ To generate the LD files for a given population (let's say African (afr)) do the
 Note, define population as the shortened form as seen in gnomAD website.
 African = afr, Non-finnish european = nfe, Estonian = est, etc...
 
-1. 
-
-Install the hail package which is leveraged to query and operate on the gnomAD blockmatrices downstream. 
+1. Install the hail package which is leveraged to query and operate on the gnomAD blockmatrices downstream. 
 
 ```bash
 pip3 install hail
@@ -17,13 +15,13 @@ pip3 install hail
 
 Navigate to hyperparams.py to update some hyper-parameters that the rest of scripts will use. Where this repository is git cloned, 
 
-1. Update the global_directory_path variable such that the path is 
+   1. Update the global_directory_path variable such that the path is 
     
-'''bash
+```bash
 .../gnomAD_LD_Easy_Querying/
-'''
+```
 
-    2. Update the "sherlock_partition_string" to account for which partitions you will be using (specific to your lab). For example, I use "qsu,zihuai". One could also use "zihuai" etc. 
+   2. Update the "sherlock_partition_string" to account for which partitions you will be using (specific to your lab). For example, I use "qsu,zihuai". One could also use "zihuai" etc. 
 
 
 3. Download gnomAD files from https://gnomad.broadinstitute.org/downloads
