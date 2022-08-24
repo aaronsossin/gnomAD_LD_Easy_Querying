@@ -55,7 +55,7 @@ ht_idx = hl.read_table(global_directory_path + "gnomAD_downloaded_files/gnomad.g
 save_dir = global_directory_path + "LD_matrices/" + pop + "/"
 
 # Create sub-directory for saving files if it doesn't exist
-if os.path.exists(save_dir):
+if not os.path.exists(save_dir):
     os.mkdir(save_dir)
 
 # Pre-partitioned file loading
