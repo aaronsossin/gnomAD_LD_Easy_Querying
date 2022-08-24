@@ -1,4 +1,4 @@
-#WORKFLOW
+# WORKFLOW
 
 To generate the LD files for a given population (let's say African (afr)) do the following
 
@@ -8,13 +8,19 @@ African = afr, Non-finnish european = nfe, Estonian = est, etc...
 1. 
 
 Install the hail package which is leveraged to query and operate on the gnomAD blockmatrices downstream. 
-<code> pip3 install hail </code>
+
+```bash
+pip3 install hail
+```
 
 2. 
 
 Navigate to hyperparams.py to update some hyper-parameters that the rest of scripts will use. Where this repository is git cloned, 
 
-    1. Update the global_directory_path variable such that the path is .../gnomAD_LD_Easy_Querying/
+    1. Update the global_directory_path variable such that the path is 
+    '''bash
+    .../gnomAD_LD_Easy_Querying/
+    '''
 
     2. Update the "sherlock_partition_string" to account for which partitions you will be using (specific to your lab). For example, I use "qsu,zihuai". One could also use "zihuai" etc. 
 
