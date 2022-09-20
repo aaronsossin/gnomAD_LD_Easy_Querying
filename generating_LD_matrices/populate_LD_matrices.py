@@ -170,9 +170,11 @@ for ix,i in enumerate(partitions):
     if len(positions) < interval_size:
         split_indices = [np.array(range(len(positions)))]
     else:
-        split_indices = list(np.array_split(range(len(positions))[:-remainder], int(len(range(len(positions))[:-remainder])/interval_size)))
         if remainder != 0:
+            split_indices = list(np.array_split(range(len(positions))[:-remainder], int(len(range(len(positions))[:-remainder])/interval_size)))
             split_indices.append(np.array(range(len(positions))[-remainder:]))
+        else:
+            split_indices = list(np.array_split(range(len(positions)), int(len(range(len(positions)))/interval_size)))
         
     # Remove duplicating problem that meant weird sizes would happen. 
     for ix in range(len(split_indices) - 1):
